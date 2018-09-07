@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Dream</string>
+    <string name="button">Push Me!</string>
+    <string name="sample">Please enter your name below and click continue.  Through out the game click on areas of the picture to collect items or continue with the game.</string>
+    <string name="welcome">Welcome to your Dream! Touch the moon&#8320;</string>
+</resources>
