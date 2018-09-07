@@ -3,4 +3,7 @@
     <string name="button">Push Me!</string>
     <string name="sample">Please enter your name below and click continue.  Through out the game click on areas of the picture to collect items or continue with the game.</string>
     <string name="welcome">Welcome to your Dream! Touch the moon&#8320;</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Player not saved because it is empty.</string>
+
 </resources>

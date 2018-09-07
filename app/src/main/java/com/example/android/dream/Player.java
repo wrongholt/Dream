@@ -13,8 +13,7 @@ public class Player {
     @ColumnInfo(name = "username")
     private String username;
 
-    public Player(int id, @NonNull String username) {
-        this.id = id;
+    public Player( @NonNull String username) {
         this.username = username;
     }
 
