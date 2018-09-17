@@ -59,12 +59,17 @@ public class MainActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(editTextUsername.getText())) {
                     setResult(RESULT_CANCELED, replyIntent);
                 } else {
-                    String word = editTextUsername.getText().toString();
-                    replyIntent.putExtra(EXTRA_REPLY, word);
+                    String player = editTextUsername.getText().toString();
+                    replyIntent.putExtra(EXTRA_REPLY, player);
                     setResult(RESULT_OK, replyIntent);
-                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                    startActivityForResult(intent, NEW_PLAYER_ACTIVITY_REQUEST_CODE);
                 }
+                String playerString = editTextUsername.getText().toString();
+                Player player = new Player(playerString);
+                mDreamViewModel.insert(player);
+                Intent intent = new Intent(MainActivity.this, LevelOneActivity.class);
+                intent.putExtra("player", playerString);
+
+                startActivityForResult(intent, NEW_PLAYER_ACTIVITY_REQUEST_CODE);
                 finish();
             }
         });
@@ -72,19 +77,7 @@ public class MainActivity extends AppCompatActivity {
         addTouchListener();
 
     }
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == NEW_PLAYER_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Player player = new Player(data.getStringExtra(EXTRA_REPLY));
-            mDreamViewModel.insert(player);
-        } else {
-            Toast.makeText(
-                    getApplicationContext(),
-                    R.string.empty_not_saved,
-                    Toast.LENGTH_LONG).show();
-        }
-    }
     void typewriterOutput(String text) {
         writer = new Typewriter(outputTextView);
         writer.animateText(text);

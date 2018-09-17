@@ -12,8 +12,34 @@ public class Player {
     @NonNull
     @ColumnInfo(name = "username")
     private String username;
+    @ColumnInfo(name = "equipmentId")
+    private int equipmentId;
+    @ColumnInfo(name = "avatarId")
+    private String avatarId;
 
-    public Player( @NonNull String username) {
+//    public Player(@NonNull String username, int equipmentId, String avatarId) {
+//        this.username = username;
+//        this.equipmentId = equipmentId;
+//        this.avatarId = avatarId;
+//    }
+
+    public int getEquipmentId() {
+        return equipmentId;
+    }
+
+    public String getAvatarId() {
+        return avatarId;
+    }
+
+    public void setEquipmentId(int equipmentId) {
+        this.equipmentId = equipmentId;
+    }
+
+    public void setAvatarId(String avatarId) {
+        this.avatarId = avatarId;
+    }
+
+    public Player(@NonNull String username) {
         this.username = username;
     }
 

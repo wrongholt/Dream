@@ -4,21 +4,26 @@ import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.migration.Migration;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Player.class}, version = 1)
+@Database(entities = {Player.class,Avatar.class}, version = 3)
 public abstract class DreamRoomDatabase extends RoomDatabase{
     public abstract PlayerDao playerDao();
-
+    public  abstract AvatarDao avatarDao();
     private static DreamRoomDatabase INSTANCE;
-
+    static final Migration MIGRATION_2_3 = new Migration(2, 3) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+                  }
+    };
     static DreamRoomDatabase getDatabase(final Context context){
         if(INSTANCE == null){
             synchronized (DreamRoomDatabase.class){
                 if (INSTANCE == null){
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),DreamRoomDatabase.class ,"dream_database").build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),DreamRoomDatabase.class ,"dream_database").addMigrations(MIGRATION_2_3).addCallback(sRoomDatabaseCallback).build();
                 }
             }
         }
@@ -32,6 +37,7 @@ public abstract class DreamRoomDatabase extends RoomDatabase{
             // If you want to keep the data through app restarts,
             // comment out the following line.
             new PopulateDbAsync(INSTANCE).execute();
+
         }
     };
 
@@ -41,20 +47,27 @@ public abstract class DreamRoomDatabase extends RoomDatabase{
      */
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
-        private final PlayerDao mDao;
+        private final AvatarDao mAvatarDao;
 
         PopulateDbAsync(DreamRoomDatabase db) {
-            mDao = db.playerDao();
+            mAvatarDao = db.avatarDao();
         }
 
         @Override
         protected Void doInBackground(final Void... params) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
-            mDao.deleteAll();
+            mAvatarDao.deleteAll();
 
-            Player player = new Player("John");
-            mDao.insert(player);
+            Avatar[] avatars = {
+                new Avatar(1,"Cheetah","This cool cat is fast and nice",12,22,12,14,14,23,R.drawable.jaguar),
+                        new Avatar(2,"Cheetah","This cool cat is fast and nice",12,22,12,14,14,23,R.drawable.jaguar),
+                        new Avatar(3,"Cheetah","This cool cat is fast and nice",12,22,12,14,14,23,R.drawable.jaguar),
+                        new Avatar(4,"Cheetah","This cool cat is fast and nice",12,22,12,14,14,23,R.drawable.jaguar)
+            };
+            mAvatarDao.insertAll(avatars);
+
+
             return null;
         }
     }

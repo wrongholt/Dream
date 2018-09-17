@@ -6,11 +6,11 @@ import android.os.AsyncTask;
 
 import java.util.List;
 
-public class DreamRepository {
+public class PlayerRepository {
     private PlayerDao mPlayerDao;
     private LiveData<List<Player>> mAllPlayers;
 
-    DreamRepository(Application application) {
+    PlayerRepository(Application application) {
         DreamRoomDatabase db = DreamRoomDatabase.getDatabase(application);
         mPlayerDao = db.playerDao();
         mAllPlayers = mPlayerDao.getAllPlayers();
