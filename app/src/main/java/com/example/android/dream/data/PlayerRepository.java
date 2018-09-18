@@ -1,8 +1,10 @@
-package com.example.android.dream;
+package com.example.android.dream.data;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
+
+import com.example.android.dream.models.Player;
 
 import java.util.List;
 

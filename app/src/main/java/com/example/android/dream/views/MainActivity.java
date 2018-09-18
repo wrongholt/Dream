@@ -1,13 +1,10 @@
-package com.example.android.dream;
+package com.example.android.dream.views;
 
 import android.annotation.SuppressLint;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.graphics.Point;
 import android.graphics.PointF;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -19,10 +16,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.android.dream.R;
+import com.example.android.dream.models.MapCoords;
+import com.example.android.dream.models.Player;
+import com.example.android.dream.models.Typewriter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 String playerString = editTextUsername.getText().toString();
                 Player player = new Player(playerString);
                 mDreamViewModel.insert(player);
-                Intent intent = new Intent(MainActivity.this, LevelOneActivity.class);
+                Intent intent = new Intent(MainActivity.this, PickAvatarActivity.class);
                 intent.putExtra("player", playerString);
 
                 startActivityForResult(intent, NEW_PLAYER_ACTIVITY_REQUEST_CODE);

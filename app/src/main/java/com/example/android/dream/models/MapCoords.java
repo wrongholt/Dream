@@ -1,4 +1,4 @@
-package com.example.android.dream;
+package com.example.android.dream.models;
 
 import android.content.Context;
 import android.graphics.PointF;

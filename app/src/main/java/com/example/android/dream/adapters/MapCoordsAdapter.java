@@ -1,17 +1,15 @@
-package com.example.android.dream;
+package com.example.android.dream.adapters;
 
 import android.content.Context;
-import android.graphics.PointF;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.example.android.dream.models.MapCoords;
+
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class MapCoordsAdapter extends ArrayAdapter<MapCoords> {
     public MapCoordsAdapter(@NonNull Context context, int resource) {

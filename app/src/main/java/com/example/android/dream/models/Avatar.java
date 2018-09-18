@@ -1,4 +1,4 @@
-package com.example.android.dream;
+package com.example.android.dream.models;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

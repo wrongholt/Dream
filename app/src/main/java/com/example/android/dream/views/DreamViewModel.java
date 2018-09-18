@@ -1,9 +1,14 @@
-package com.example.android.dream;
+package com.example.android.dream.views;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
+
+import com.example.android.dream.data.AvatarRepository;
+import com.example.android.dream.data.PlayerRepository;
+import com.example.android.dream.models.Avatar;
+import com.example.android.dream.models.Player;
 
 import java.util.List;
 

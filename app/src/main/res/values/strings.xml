@@ -8,5 +8,7 @@
     <string name="app_levelone">Level One</string>
     <string name="avatar_one">Avatar One</string>
     <string name="welcome_level_one">Hello, %s! Please select your avatar.</string>
+    <string name="strength">Strength</string>
+    <string name="intelligence">Intelligence</string>
 
 </resources>

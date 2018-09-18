@@ -1,4 +1,4 @@
-package com.example.android.dream;
+package com.example.android.dream.data;
 
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
@@ -8,6 +8,10 @@ import android.arch.persistence.room.migration.Migration;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+
+import com.example.android.dream.models.Avatar;
+import com.example.android.dream.models.Player;
+import com.example.android.dream.R;
 
 @Database(entities = {Player.class,Avatar.class}, version = 3)
 public abstract class DreamRoomDatabase extends RoomDatabase{
@@ -60,10 +64,10 @@ public abstract class DreamRoomDatabase extends RoomDatabase{
             mAvatarDao.deleteAll();
 
             Avatar[] avatars = {
-                new Avatar(1,"Cheetah","This cool cat is fast and nice",12,22,12,14,14,23,R.drawable.jaguar),
-                        new Avatar(2,"Cheetah","This cool cat is fast and nice",12,22,12,14,14,23,R.drawable.jaguar),
-                        new Avatar(3,"Cheetah","This cool cat is fast and nice",12,22,12,14,14,23,R.drawable.jaguar),
-                        new Avatar(4,"Cheetah","This cool cat is fast and nice",12,22,12,14,14,23,R.drawable.jaguar)
+                new Avatar(1,"Cheetah","Quickest ",10,17,14,13,12,12, R.drawable.cheetah),
+                        new Avatar(2,"Lion","Very proud and smart",14,11,18,13,18,16,R.drawable.lion),
+                        new Avatar(3,"Polar Bear","The strongest",18,10,13,12,20,18,R.drawable.polarbear),
+                        new Avatar(4,"Orangutan","Stealthy and quick",14,15,12,17,14,12,R.drawable.orangutan)
             };
             mAvatarDao.insertAll(avatars);
 
